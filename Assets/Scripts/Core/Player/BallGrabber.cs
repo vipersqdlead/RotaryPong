@@ -39,7 +39,7 @@ namespace RotaryPong
             if(pickObj.TryGetComponent(out Rigidbody rigidbody))
             {
                 _heldObjectRigidbody = rigidbody;
-                _heldObjectRigidbody.drag = 10;
+                _heldObjectRigidbody.linearDamping = 10;
                 _heldObjectRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 
                 _heldObjectRigidbody.transform.parent = _holdArea;
@@ -53,7 +53,7 @@ namespace RotaryPong
         {
             if(_heldObject != null && parameters.SourceGrabber == this.gameObject)
             {
-                _heldObjectRigidbody.drag = 1;
+                _heldObjectRigidbody.linearDamping = 1;
                 _heldObjectRigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
 
                 _heldObject.transform.parent = null;

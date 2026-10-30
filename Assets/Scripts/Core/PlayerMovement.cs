@@ -71,7 +71,7 @@ namespace RotaryPong
             Vector3 direction = _movementInput;
             float timeSpeed = Time.deltaTime * _playerSpeed.Value;
 
-            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.linearVelocity = Vector3.zero;
             direction *= timeSpeed;
             _rigidbody.position += direction;
         }

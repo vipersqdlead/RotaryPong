@@ -80,7 +80,7 @@ namespace RotaryPong
         }
         private void Update()
         {
-            lastFrameVelocity = _rigidbody.velocity;
+            lastFrameVelocity = _rigidbody.linearVelocity;
             
             if (_paint.Value != Paint.White) CheckPaint();
             CheckDistanceFromCenter();
@@ -120,11 +120,11 @@ namespace RotaryPong
                 {
                     speed = ballSpeed;
                 }
-                _rigidbody.velocity = direction * Mathf.Max(speed, minVelocity);
+                _rigidbody.linearVelocity = direction * Mathf.Max(speed, minVelocity);
                 Debug.DrawRay(transform.position, direction * 3, Color.red, 5);
                 return;
             }
-            _rigidbody.velocity = collisionNormal * ballSpeed;
+            _rigidbody.linearVelocity = collisionNormal * ballSpeed;
         }
         private void Dropped(DropBallParameters parameters)
         {
@@ -140,13 +140,13 @@ namespace RotaryPong
             {
                 if (ballVelocity <= ballSpeed) ballVelocity = ballSpeed;
 
-                _rigidbody.velocity = direction * Mathf.Max(ballVelocity, minVelocity);
+                _rigidbody.linearVelocity = direction * Mathf.Max(ballVelocity, minVelocity);
                 Debug.DrawRay(transform.position, direction * 3, Color.red, 5);
                 return;
             }
-            _rigidbody.velocity = direction * ballSpeed;
+            _rigidbody.linearVelocity = direction * ballSpeed;
             
-            _rigidbody.velocity = direction * Mathf.Max(ballSpeed, minVelocity);
+            _rigidbody.linearVelocity = direction * Mathf.Max(ballSpeed, minVelocity);
             _currentGrabber = null;
             _effectTimer = _effectTimerInSeconds.Value;
         }
@@ -227,7 +227,7 @@ namespace RotaryPong
         public void TurnBackOn()
         {
             transform.position = _startingPoint;
-            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.linearVelocity = Vector3.zero;
             _renderer.enabled = true;
             _collider.enabled = true;
             _trailRenderer.enabled = true;

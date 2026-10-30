@@ -14,7 +14,9 @@ public class LoginMenuManager : MonoBehaviour
 
     [SerializeField] string currentUserKey = "";
 
-    [SerializeField] CreateUserPanel createUserPanel;
+    [HideInInspector] public const string usernameKey1 = "username1";
+    [HideInInspector] public const string usernameKey2 = "username2";
+    [HideInInspector] public const string usernameKey3 = "username3";
 
     private void Awake()
     {
@@ -54,20 +56,19 @@ public class LoginMenuManager : MonoBehaviour
         {
             if(username == "")
             {
-                createUserPanel.ChangeTextMessage("Please enter a name", Color.red);
-
+                //createUserPanel.ChangeTextMessage("Please enter a name", Color.red);
                 return;
             }
-            if (username == PlayerPrefs.GetString(CreateUserPanel.usernameKey1) || username == PlayerPrefs.GetString(CreateUserPanel.usernameKey2) || username == PlayerPrefs.GetString(CreateUserPanel.usernameKey3))
+            if (username == PlayerPrefs.GetString(usernameKey1) || username == PlayerPrefs.GetString(usernameKey2) || username == PlayerPrefs.GetString(usernameKey3))
             {
-                createUserPanel.ChangeTextMessage("The username is already being used", Color.red);
-
+                //createUserPanel.ChangeTextMessage("The username is already being used", Color.red);
                 return;
             }
         }
 
         // User Creation
         {
+            /*
             if (PlayerPrefs.GetString(CreateUserPanel.usernameKey1) == null)
             {
                 PlayerPrefs.SetString(CreateUserPanel.usernameKey1, username);
@@ -86,6 +87,7 @@ public class LoginMenuManager : MonoBehaviour
                 return;
             }
             createUserPanel.ChangeTextMessage("User succesfully created!", Color.black);
+            */
         }
     }
 
